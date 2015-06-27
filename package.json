@@ -1,0 +1,24 @@
+{
+  "name": "async-handlers",
+  "version": "1.0.0",
+  "description": "Function factories for performing synchronous operations after asynchronous operations",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "find ./src -name '*.coffee' -not -name '*_spec.coffee' | xargs coffee --compile --output lib/",
+    "build-node": "find ./src -name '*.coffee' -not -name '*_spec.coffee' | xargs coffee --compile --output lib/",
+    "build-browser": "browser",
+    "test": "mycha"
+  },
+  "author": {
+    "name": "Charlie Rudolph",
+    "email": "charles.w.rudolph@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "coffee-script": "^1.9.3",
+    "mycha": "^0.9.1",
+    "sinon": "^1.15.3",
+    "sinon-chai": "^2.8.0"
+  }
+}
