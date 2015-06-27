@@ -5,9 +5,8 @@
   "main": "./lib/index.js",
   "scripts": {
     "build": "find ./src -name '*.coffee' -not -name '*_spec.coffee' | xargs coffee --compile --output lib/",
-    "build-node": "find ./src -name '*.coffee' -not -name '*_spec.coffee' | xargs coffee --compile --output lib/",
-    "build-browser": "browser",
-    "test": "mycha"
+    "test": "mycha",
+    "prepublish": "npm run build"
   },
   "author": {
     "name": "Charlie Rudolph",

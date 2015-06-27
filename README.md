@@ -1,4 +1,4 @@
-# Asynchronous function handlers
+# Asynchronous handlers
 
 Function factories for performing synchronous operations after asynchronous operations
 
