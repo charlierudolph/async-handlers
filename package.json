@@ -12,6 +12,10 @@
     "name": "Charlie Rudolph",
     "email": "charles.w.rudolph@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/charlierudolph/async-handlers.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.0.0",
