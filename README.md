@@ -29,6 +29,11 @@ f1 = function (callback) {
 }
 ```
 
+#### exitOnError
+
+A function that when called with an error, prints the error in red to `stderr` and exits with status 1.
+Otherwise does nothing.
+
 
 #### extract(key, callback)
 
