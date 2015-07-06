@@ -9,7 +9,7 @@ describe 'exitOnError', ->
 
   context 'passed an error', ->
     beforeEach (done) ->
-      withError = "#{@setup} handler('error');"
+      withError = "#{@setup} handler(Error 'something went wrong');"
       childProcess.exec "coffee -e \"#{withError}\"", (@err, @stdout, @stderr) => done()
 
     it 'errors with status code 1', ->
@@ -20,7 +20,7 @@ describe 'exitOnError', ->
       expect(@stdout).to.eql ''
 
     it 'logs the error in red to stderr', ->
-      expect(@stderr).to.eql clc.red('error') + '\n'
+      expect(@stderr).to.eql clc.red('Error: something went wrong') + '\n'
 
 
   context 'not passed an error', ->
