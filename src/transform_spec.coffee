@@ -2,23 +2,38 @@
 
 
 describe 'transform', ->
-  beforeEach ->
-    fn = (a) -> a + 1
-    @callback = sinon.spy()
-    @handler = transform fn, @callback
+  context 'invalid parameters', ->
+    it 'throws when fn in undefined', ->
+      expect(-> transform undefined, ->).to.throw 'fn is not a function'
 
-  context 'passed an error', ->
+    it 'throws when fn in not a function', ->
+      expect(-> transform {}, ->).to.throw 'fn is not a function'
+
+    it 'throws when callback in undefined', ->
+      expect(-> transform (->)).to.throw 'callback is not a function'
+
+    it 'throws when callback in not a function', ->
+      expect(-> transform (->), {}).to.throw 'callback is not a function'
+
+
+  context 'valid parameters', ->
     beforeEach ->
-      @handler 'error'
+      fn = (a) -> a + 1
+      @callback = sinon.spy()
+      @handler = transform fn, @callback
 
-    it 'executes the callback with the error', ->
-      expect(@callback).to.have.been.calledOnce
-      expect(@callback).to.have.been.calledWithExactly 'error'
+    context 'passed an error', ->
+      beforeEach ->
+        @handler 'error'
 
-  context 'passed a result', ->
-    beforeEach ->
-      @handler null, 1
+      it 'executes the callback with the error', ->
+        expect(@callback).to.have.been.calledOnce
+        expect(@callback).to.have.been.calledWithExactly 'error'
 
-    it 'executes the callback with the extracted value at the given key', ->
-      expect(@callback).to.have.been.calledOnce
-      expect(@callback).to.have.been.calledWithExactly null, 2
+    context 'passed a result', ->
+      beforeEach ->
+        @handler null, 1
+
+      it 'executes the callback with the extracted value at the given key', ->
+        expect(@callback).to.have.been.calledOnce
+        expect(@callback).to.have.been.calledWithExactly null, 2
