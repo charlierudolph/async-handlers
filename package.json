@@ -1,6 +1,6 @@
 {
   "name": "async-handlers",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Function factories for performing synchronous operations after asynchronous operations",
   "main": "./lib/index.js",
   "scripts": {
