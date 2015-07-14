@@ -1,6 +1,6 @@
-exitOnError = require './exit_on_error'
-extract = require './extract'
-transform = require './transform'
-
-
-module.exports = {exitOnError, extract, transform}
+module.exports = {
+  exitOnError: require './exit_on_error'
+  extract: require './extract'
+  prependToError: require './prepend_to_error'
+  transform: require './transform'
+}
