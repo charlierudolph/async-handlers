@@ -18,7 +18,7 @@ describe 'transform', ->
 
   context 'valid parameters', ->
     beforeEach ->
-      fn = (a) -> a + 1
+      fn = (a, b) -> a + b
       @callback = sinon.spy()
       @handler = transform fn, @callback
 
@@ -32,8 +32,8 @@ describe 'transform', ->
 
     context 'passed a result', ->
       beforeEach ->
-        @handler null, 1
+        @handler null, 1, 2
 
       it 'executes the callback with the extracted value at the given key', ->
         expect(@callback).to.have.been.calledOnce
-        expect(@callback).to.have.been.calledWithExactly null, 2
+        expect(@callback).to.have.been.calledWithExactly null, 3
