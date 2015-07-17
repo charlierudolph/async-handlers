@@ -1,12 +1,6 @@
 # Asynchronous handlers
 
-Function factories for performing synchronous operations after asynchronous operations
-
-
-#### transform(fn, callback)
-
-Returns a function `(err, result)` that can be passed to an asynchronous function
-that will pass the error through or pass `(null, fn(result))`
+Function factories for performing synchronous operations after asynchronous operations. 
 
 ```js
 f1 = function (callback) {
@@ -29,13 +23,34 @@ f1 = function (callback) {
 }
 ```
 
+## Methods
+
 #### exitOnError
 
-A function that when called with an error, prints the error in red to `stderr` and exits with status 1.
+Returns a function with the signature `(err)`.
+When called with an error, prints the error in red to `stderr` and exits with status 1.
 Otherwise does nothing.
 
 
 #### extract(key, callback)
 
-Returns a function `(err, result)` that can be passed to an asynchronous function
-that will pass the error through or pass `(null, result[key])`
+Returns a function with the signature `(err, result)`.
+When called with an error, passes it to the callback.
+Otherwise executes callback with `(null, result[key])`.
+
+
+#### prependToError(prefix, callback)
+
+Returns a function with the signature `(err, args...)`.
+When error is a string, prepends prefix to it if and passes it to the callback.
+When error is an object with a message property, prepends prefix to its message and passes it to the callback.
+Otherwise passes all arguments to the callback.
+
+_Note: the prefix will only be prepended if not already present._
+
+
+#### transform(fn, callback)
+
+Returns a function with the signature `(err, result)`.
+When called with an error, passes it to the callback.
+Otherwise executes callback with `(null, fn(result))`.
