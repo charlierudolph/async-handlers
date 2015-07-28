@@ -1,6 +1,6 @@
 # Asynchronous handlers
 
-Function factories for performing synchronous operations after asynchronous operations. 
+Function factories for performing synchronous operations after asynchronous operations.
 
 ```js
 f1 = function (callback) {
@@ -24,6 +24,13 @@ f1 = function (callback) {
 ```
 
 ## Methods
+
+#### constant(value, callback)
+
+Returns a function with the signature `(err)`.
+When called with an error, passes it to the callback.
+Otherwise executes callback with `(null, value)`.
+
 
 #### exitOnError
 
