@@ -58,6 +58,6 @@ _Note: the prefix will only be prepended if not already present._
 
 #### transform(fn, callback)
 
-Returns a function with the signature `(err, result)`.
+Returns a function with the signature `(err, results...)`.
 When called with an error, passes it to the callback.
-Otherwise executes callback with `(null, fn(result))`.
+Otherwise executes callback with `(null, fn(results...))`.
